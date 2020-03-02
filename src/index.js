@@ -1,9 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
 import WeEditor from './WeEditor';
 
-ReactDOM.render(<WeEditor />, document.getElementById('root'));
+export default WeEditor;
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
