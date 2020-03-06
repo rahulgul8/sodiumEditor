@@ -1,5 +1,5 @@
 import WeEditor from './WeEditor';
-
+import './mscStyles.css'
 export default WeEditor;
 
 // If you want your app to work offline and load faster, you can change

@@ -8,7 +8,7 @@ import './index.css';
 import Editor from 'draft-js-plugins-editor';
 
 import editorStyles from './editorStyles.module.css';
-import plugins, { initialState, imagePlugin, SideToolbar } from './plugins/exporter';
+import plugins, { initialState, imagePlugin } from './plugins/exporter';
 import CustomInlineToolbarEditor from './plugins/ToolBar/ToolBar'
 import SideBar from './plugins/SideBar/SideBar';
 import 'draft-js/dist/Draft.css';
@@ -25,6 +25,7 @@ export default class WeEditor extends Component {
     state = {
         editorState: EditorState.createWithContent(convertFromRaw(initialState)),
     };
+
 
     onChange = (editorState) => {
         this.setState({
@@ -45,7 +46,6 @@ export default class WeEditor extends Component {
 
     render() {
 
-        const classes = 'sidemenu__button';
         return (
             <div>
                 <button onClick={this.print}>print</button>

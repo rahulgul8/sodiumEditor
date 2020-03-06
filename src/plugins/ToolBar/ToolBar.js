@@ -2,7 +2,6 @@ import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
 
 import React, { Component } from 'react';
 
-import { Separator } from 'draft-js-inline-toolbar-plugin';
 import {
     ItalicButton,
     BoldButton,
@@ -17,7 +16,7 @@ import {
     CodeBlockButton,
 } from 'draft-js-buttons';
 import editorStyles from './editorStyle.module.css';
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin';
 
 import buttonStyles from './buttonStyle.module.css';
 import toolbarStyles from './toolbarStyle.module.css';
