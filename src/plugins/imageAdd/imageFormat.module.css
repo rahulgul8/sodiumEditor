@@ -1,6 +1,5 @@
-
+/**
+Only the class name is supplied from here. The same classname is also on index.css which supplies the values
+**/
 .formatMyImage{
-    width: 100px;
-    display: block;
-    max-width: 10px;
 }

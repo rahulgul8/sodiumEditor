@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import styles from './imageAdd.module.css';
-import ReactModal from 'react-modal';
 import { mscPrompt } from 'medium-style-confirm'
 import Image from '../../icons/image'
-import classNames from 'classnames'
 export default class ImageAdd extends Component {
 
 
@@ -46,7 +44,6 @@ export default class ImageAdd extends Component {
 
 
     render() {
-        let className = classNames('material-icons','material-icons--outline', styles.icon);
         return (
             <button
                 onClick={this.handleOpenModal} className={styles.button}

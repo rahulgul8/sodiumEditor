@@ -1,37 +1,15 @@
-import { composeDecorators } from 'draft-js-plugins-editor';
-
 import createImagePlugin from 'draft-js-image-plugin';
 
 import createVideoPlugin from 'draft-js-video-plugin';
 
-import createToolbarPlugin from 'draft-js-static-toolbar-plugin';
 
-import buttonStyles from './ToolBar/buttonStyle.module.css';
-import toolbarStyles from './ToolBar/toolbarStyle.module.css';
-
-import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
-
-import sideBarButtonStyles from './SideBar/buttonStyle.module.css';
-import sideBarToolbarStyles from './SideBar/toolbarStyle.module.css';
-import sideBarBlockTypeSelectStyles from './SideBar/blockTypeStyle.module.css';
 import imageAddStyles from './imageAdd/imageFormat.module.css';
 import { inlineToolbarPlugin } from './ToolBar/ToolBar';
 import createLinkPlugin from 'draft-js-anchor-plugin';
-import createHashtagPlugin from 'draft-js-hashtag-plugin';
-import createLinkifyPlugin from 'draft-js-linkify-plugin';
 
 export const linkPlugin = createLinkPlugin({
     placeholder: 'http://…'
 });
-
-export const hashtagPlugin = createHashtagPlugin();
-export const linkifyPlugin = createLinkifyPlugin();
-
-// Setting the side Toolbar at right position(default is left) and styling with custom theme
-const sideToolbarPlugin = createSideToolbarPlugin({
-    theme: { buttonStyles: sideBarButtonStyles, toolbarStyles: sideBarToolbarStyles, blockTypeSelectStyles: sideBarBlockTypeSelectStyles }
-});
-export const { SideToolbar } = sideToolbarPlugin;
 
 
 export const imagePlugin = createImagePlugin({
@@ -46,10 +24,7 @@ export default [
     imagePlugin,
     videoPlugin,
     inlineToolbarPlugin,
-    sideToolbarPlugin,
-    linkPlugin,
-    hashtagPlugin,
-    linkifyPlugin
+    linkPlugin
 ];
 
 

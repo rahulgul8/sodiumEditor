@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 
-import {
-    HeadlineOneButton,
-    HeadlineTwoButton,
-    BlockquoteButton,
-    CodeBlockButton,
-} from 'draft-js-buttons';
 import ReactDOM from "react-dom";
-import ImageAdd from '../imageAdd/imageAdd'
 import sidebarCss from './sidebar.module.css'
 import classNames from "classnames";
 
@@ -32,6 +25,7 @@ export default class SideBar extends Component {
             return this.setBarPosition();
         });
     }
+    
     getSelectedBlockElement(range) {
         let node = range.startContainer;
         do {
