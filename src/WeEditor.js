@@ -13,7 +13,6 @@ import CustomInlineToolbarEditor from './plugins/ToolBar/ToolBar'
 import SideBar from './plugins/SideBar/SideBar';
 import 'draft-js/dist/Draft.css';
 import ImageAdd from './plugins/imageAdd/imageAdd';
-import 'draft-js-hashtag-plugin/lib/plugin.css';
 
 export default class WeEditor extends Component {
 
@@ -51,7 +50,7 @@ export default class WeEditor extends Component {
                 <button onClick={this.print}>print</button>
                 <div className={editorStyles.editor}>
                     <SideBar>
-                        <ImageAdd className={"editor"}
+                        <ImageAdd
                             editorState={this.state.editorState}
                             onChange={this.onChange}
                             modifier={imagePlugin.addImage}

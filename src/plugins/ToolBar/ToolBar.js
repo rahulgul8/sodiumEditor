@@ -5,17 +5,12 @@ import React, { Component } from 'react';
 import {
     ItalicButton,
     BoldButton,
-    UnderlineButton,
-    CodeButton,
-    HeadlineOneButton,
     HeadlineTwoButton,
-    HeadlineThreeButton,
     UnorderedListButton,
     OrderedListButton,
     BlockquoteButton,
     CodeBlockButton,
 } from 'draft-js-buttons';
-import editorStyles from './editorStyle.module.css';
 import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin';
 
 import buttonStyles from './buttonStyle.module.css';
@@ -58,7 +53,6 @@ export default class CustomInlineToolbarEditor extends Component {
                         <div>
                             <BoldButton {...externalProps} />
                             <ItalicButton {...externalProps} />
-                            {/* <UnderlineButton {...externalProps} /> */}
                             <linkPlugin.LinkButton {...externalProps} />
                             <Separator {...externalProps} />
                             <HeadlineTwoButton {...externalProps} />

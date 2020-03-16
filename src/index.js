@@ -1,6 +1,7 @@
 import WeEditor from './WeEditor';
+import Reader from './Reader'
 import './mscStyles.css'
-export default WeEditor;
+export { Reader, WeEditor };
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
