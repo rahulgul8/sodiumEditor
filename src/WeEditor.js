@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import 'draft-js-side-toolbar-plugin/lib/plugin.css';
-import {
-    convertFromRaw, convertToRaw,
-    EditorState,
-} from 'draft-js';
+
+import { EditorState, ContentState, convertFromRaw } from 'draft-js';
 import './index.css';
 import Editor from 'draft-js-plugins-editor';
 
 import editorStyles from './editorStyles.module.css';
-import plugins, { initialState, imagePlugin } from './plugins/exporter';
+import plugins, { imagePlugin } from './plugins/exporter';
 import CustomInlineToolbarEditor from './plugins/ToolBar/ToolBar'
 import SideBar from './plugins/SideBar/SideBar';
 import 'draft-js/dist/Draft.css';
