@@ -22,7 +22,9 @@ export default class WeEditor extends Component {
     }
 
     state = {
-        editorState: EditorState.createWithContent(convertFromRaw(initialState)),
+        editorState: this.props.editorState ? EditorState.createWithContent(convertFromRaw(this.props.editorState)) : EditorState.createWithContent(
+            ContentState.createFromText("")
+        )
     };
 
 
@@ -32,42 +34,31 @@ export default class WeEditor extends Component {
         });
     };
 
-    print = () => {
-        const rawContentState = convertToRaw(
-            this.state.editorState.getCurrentContent()
-        );
-        console.log(JSON.stringify(rawContentState));
-    }
-
     focus = () => {
         this.editor.focus();
     };
 
     render() {
-
         return (
-            <div>
-                <button onClick={this.print}>print</button>
-                <div className={editorStyles.editor}>
-                    <SideBar>
-                        <ImageAdd
-                            editorState={this.state.editorState}
-                            onChange={this.onChange}
-                            modifier={imagePlugin.addImage}
-                        />
-                    </SideBar>
+            <div className={editorStyles.editor}>
+                <SideBar>
+                    <ImageAdd
+                        editorState={this.state.editorState}
+                        onChange={this.onChange}
+                        modifier={imagePlugin.addImage}
+                    />
+                </SideBar>
 
-                    <div onClick={this.focus}>
-                        <Editor
-                            editorState={this.state.editorState}
-                            onChange={this.onChange}
-                            plugins={plugins}
-                            ref={(element) => { this.editor = element; }}
-                        />
-                        <CustomInlineToolbarEditor></CustomInlineToolbarEditor>
-                    </div>
+                <div onClick={this.focus}>
+                    <Editor
+                        editorState={this.state.editorState}
+                        onChange={this.onChange}
+                        plugins={plugins}
+                        ref={(element) => { this.editor = element; }}
+                    />
+                    <CustomInlineToolbarEditor></CustomInlineToolbarEditor>
                 </div>
-            </div >
+            </div>
         );
     }
 }
