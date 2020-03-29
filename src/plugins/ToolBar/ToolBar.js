@@ -24,7 +24,6 @@ export const { InlineToolbar } = inlineToolbarPlugin;
 
 inlineToolbarPlugin.blockStyleFn = (contentBlock) => {
     const type = contentBlock.getType();
-    console.log("type is " + type);
     if (type === 'blockquote') {
         return 'WeBlockquote';
     }

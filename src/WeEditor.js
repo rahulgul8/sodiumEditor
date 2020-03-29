@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'draft-js-side-toolbar-plugin/lib/plugin.css';
 
-import { EditorState, ContentState, convertFromRaw } from 'draft-js';
+import { EditorState, ContentState, convertFromRaw, convertToRaw } from 'draft-js';
 import './index.css';
 import Editor from 'draft-js-plugins-editor';
 
@@ -30,11 +30,26 @@ export default class WeEditor extends Component {
         this.setState({
             editorState,
         });
+        if (this.props.onChange) {
+            this.props.onChange(editorState);
+        }
     };
 
     focus = () => {
         this.editor.focus();
     };
+
+    getRawContent = () => {
+        let c = convertToRaw(this.state.editorState.getCurrentContent())
+        console.log("as is", convertFromRaw(c))
+        return convertToRaw(this.state.editorState.getCurrentContent());
+    }
+
+    setRawContent = (content) => {
+        if (content) {
+            this.setState({ editorState: EditorState.createWithContent(convertFromRaw(content)) });
+        }
+    }
 
     render() {
         return (
