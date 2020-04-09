@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "draft-js": "^0.11.4",
     "draft-js-alignment-plugin": "^2.0.6",
     "draft-js-anchor-plugin": "^2.0.3",
     "draft-js-drag-n-drop-plugin": "^2.0.4",
@@ -51,7 +52,7 @@
     "draft-js-static-toolbar-plugin": "^3.0.1",
     "draft-js-video-plugin": "^2.0.2",
     "medium-style-confirm": "^0.4.6",
-    "draft-js": "^0.11.4",
+    "memoize-one": "^5.1.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-modal": "^3.11.2"

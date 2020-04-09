@@ -53,7 +53,6 @@ export default class CustomInlineToolbarEditor extends Component {
                             <BoldButton {...externalProps} />
                             <ItalicButton {...externalProps} />
                             <linkPlugin.LinkButton {...externalProps} />
-                            <Separator {...externalProps} />
                             <HeadlineTwoButton {...externalProps} />
                             <CodeBlockButton {...externalProps} />
                             <UnorderedListButton {...externalProps} />
