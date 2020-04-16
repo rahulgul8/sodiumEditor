@@ -12,20 +12,10 @@ class Reader extends Component {
         this.editorRef = React.createRef();
     }
 
-    loadPageContent = (title, content) => {
-        this.editorRef.current.setRawContent(content);
-        this.editorRef.current.setTitle(title);
-    }
-
-    componentDidMount() {
-        this.loadPageContent(this.props.title, this.props.editorState);
-    }
-
     render() {
+        console.log('reader', this.props.editorState, this.props.title);
         return (
-            <div>
-                <WeEditor ref={this.editorRef} {...this.props} />
-            </div >
+            <WeEditor ref={this.editorRef} editorState={this.props.editorState} {...this.props} />
         );
     }
 }

@@ -16,6 +16,10 @@ export default class WeEditor extends Component {
     constructor(props) {
         super(props);
         this.onChange = this.onChange.bind(this);
+        this.state = {
+            editorState: this.getContent(this.props.editorState),
+            titleState: this.getContent(this.props.title)
+        };
     }
 
     componentDidUpdate(prevProps) {
@@ -24,14 +28,11 @@ export default class WeEditor extends Component {
             this.setRawContent(this.props.editorState);
         }
         if (this.props.title !== prevProps.title) {
-            this.setTitle(this.props.title);
+            this.setRawTitle(this.props.title);
         }
     }
 
-    state = {
-        editorState: this.getContent(this.props.editorState),
-        titleState: this.getContent(this.props.title)
-    };
+
 
     onTitleChange = (titleState) => {
         this.setState({
@@ -39,12 +40,20 @@ export default class WeEditor extends Component {
         });
     }
     onChange = (editorState) => {
+        let contentChanged = false;
+        if (editorState.getCurrentContent() !== this.state.editorState.getCurrentContent()) {
+            contentChanged = true;
+        }
+        // if (editorState.getSelection() !== this.state.editorState.getSelection()) {
+        //     // selection has changed
+        // }
+        if (this.props.onChange) {
+            this.props.onChange(editorState, contentChanged);
+        }
         this.setState({
             editorState,
         });
-        if (this.props.onChange) {
-            this.props.onChange(editorState);
-        }
+
     };
 
     focus = () => {
@@ -60,21 +69,37 @@ export default class WeEditor extends Component {
         this.setState({ editorState: state });
     }
 
-    setTitle(title) {
+    getPlainContent() {
+        return this.getPlainText(this.state.editorState);
+    }
+
+    setRawTitle(title) {
         let value = this.getContent(title);
         this.setState({ titleState: value })
     }
 
-    getTitle() {
+    getRawTitle() {
         return convertToRaw(this.state.titleState.getCurrentContent());
     }
 
-    getContent(content) {
+    getPlainTitle() {
+        return this.getPlainText(this.state.titleState);
+    }
+
+    getPlainText(state) {
+        if (state && state.getCurrentContent) { return state.getCurrentContent().getPlainText('\u0001') }
+    }
+
+    getContent(content, isString = false) {
         let state;
-        if (content) {
+        if (content && !isString) {
             state = EditorState.createWithContent(convertFromRaw(content));
         } else {
-            state = EditorState.createWithContent(ContentState.createFromText(""));
+
+            if (!content) {
+                content = "";
+            }
+            state = EditorState.createWithContent(ContentState.createFromText(content));
         }
         return state;
     }
@@ -95,7 +120,6 @@ export default class WeEditor extends Component {
     }
 
     render() {
-       
         return (
             <div>
                 <div id="titleEditor" className={editorStyles.titleEditor}>
