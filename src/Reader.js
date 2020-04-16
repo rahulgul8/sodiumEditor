@@ -13,7 +13,6 @@ class Reader extends Component {
     }
 
     render() {
-        console.log('reader', this.props.editorState, this.props.title);
         return (
             <WeEditor ref={this.editorRef} editorState={this.props.editorState} {...this.props} />
         );
