@@ -1,4 +1,4 @@
-import createImagePlugin from 'draft-js-image-plugin';
+import createImagePlugin from './imageAdd/plugin/plugin';
 
 import createVideoPlugin from 'draft-js-video-plugin';
 
