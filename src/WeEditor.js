@@ -35,6 +35,13 @@ export default class WeEditor extends Component {
 
 
     onTitleChange = (titleState) => {
+        let contentChanged = false;
+        if (titleState.getCurrentContent() !== this.state.titleState.getCurrentContent()) {
+            contentChanged = true;
+        }
+        if (this.props.onTitleChange) {
+            this.props.onTitleChange(titleState, contentChanged);
+        }
         this.setState({
             titleState
         });
