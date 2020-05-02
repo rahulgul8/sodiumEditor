@@ -20,7 +20,9 @@
   "homepage": "https://github.com/rahulgul8/sodiumEditor#readme",
   "scripts": {
     "start": "webpack --watch",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,6 +40,7 @@
     ]
   },
   "dependencies": {
+    "@emotion/core": "^10.0.28",
     "classnames": "^2.2.6",
     "draft-js": "^0.11.4",
     "draft-js-alignment-plugin": "^2.0.6",
@@ -69,6 +72,10 @@
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-stage-3": "^7.8.3",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/react": "^5.3.18",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.4.2",
     "path": "^0.12.7",

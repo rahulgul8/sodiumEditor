@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
 import ReactDOM from "react-dom";
-import sidebarCss from './sidebar.module.css'
-import classNames from "classnames";
-
-
-let cx = classNames.bind(sidebarCss);
+import sidebarCss from './sidebar.style.js'
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 
 export default class SideBar extends Component {
 
@@ -25,7 +23,7 @@ export default class SideBar extends Component {
             return this.setBarPosition();
         });
     }
-    
+
     getSelectedBlockElement(range) {
         let node = range.startContainer;
         do {
@@ -80,22 +78,20 @@ export default class SideBar extends Component {
     }
     render() {
 
-        const buttonClass = classNames(
-            sidebarCss.button,
-            { [sidebarCss.buttonOpen]: this.state.open }
-        );
+        const buttonClass = this.state.open ? css(sidebarCss.button, sidebarCss.buttonOpen) : css(sidebarCss.button);
 
-        const listClass = classNames(sidebarCss.items, { [sidebarCss.hidden]: !this.state.open });
+        const listClass = !this.state.open ? css(sidebarCss.items, sidebarCss.hidden) : css(sidebarCss.items);
+        // classNames(sidebarCss.items, { [sidebarCss.hidden]: !this.state.open });
         return (
             <div
                 ref={el => {
                     this.containerEl = el;
                 }}
-                className={sidebarCss.sidebar}
+                css={sidebarCss.sidebar}
             >
-                <div style={{ top: `${this.state.top}px` }} className={sidebarCss.sidebarMenu}>
-                    <button className={buttonClass} onClick={this.toggleOpen} >+</button>
-                    <div className={listClass}> {this.props.children}</div>
+                <div style={{ top: `${this.state.top}px` }} css={sidebarCss.sidebarMenu}>
+                    <button css={buttonClass} onClick={this.toggleOpen} >+</button>
+                    <div css={listClass}> {this.props.children}</div>
                 </div>
 
             </div>

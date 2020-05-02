@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import styles from './imageAdd.module.css';
+import styles from './imageAdd.style';
 import { mscPrompt } from 'medium-style-confirm'
 import Image from '../../icons/image'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
+
 export default class ImageAdd extends Component {
+
 
 
     constructor() {
@@ -46,8 +50,8 @@ export default class ImageAdd extends Component {
     render() {
         return (
             <button
-                onClick={this.handleOpenModal} className={styles.button}
-            ><Image className={styles.icon}/></button>
+                onClick={this.handleOpenModal} css={styles.button}
+            ><Image css={styles.icon} /></button>
         );
     }
 }

@@ -3,7 +3,6 @@ import createImagePlugin from './imageAdd/plugin/plugin';
 import createVideoPlugin from 'draft-js-video-plugin';
 
 
-import imageAddStyles from './imageAdd/imageFormat.module.css';
 import { inlineToolbarPlugin } from './ToolBar/ToolBar';
 import createLinkPlugin from 'draft-js-anchor-plugin';
 
@@ -12,11 +11,7 @@ export const linkPlugin = createLinkPlugin({
 });
 
 
-export const imagePlugin = createImagePlugin({
-    theme: {
-        image: imageAddStyles
-    }
-});
+export const imagePlugin = createImagePlugin();
 export const videoPlugin = createVideoPlugin();
 
 
