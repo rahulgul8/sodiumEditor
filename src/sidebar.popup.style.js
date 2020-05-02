@@ -1,4 +1,9 @@
-@-webkit-keyframes scale-fade{
+import { css } from '@emotion/core';
+
+export default {
+
+    classes: css`
+    @-webkit-keyframes scale-fade{
     0%{opacity:0;-webkit-transform:scale(.8) rotateX(-40deg);transform:scale(.8) rotateX(-40deg)}
     50%{opacity:1}70%{-webkit-transform:scale(1.05) rotateX(0);transform:scale(1.05) rotateX(0)}
     100%{-webkit-transform:scale(1) rotateX(0);transform:scale(1) rotateX(0)}
@@ -140,4 +145,6 @@ button.msc-cancel:hover, button.msc-cancel:focus {
 
 .msc-sub{
     white-space: pre-line;
+}
+`
 }

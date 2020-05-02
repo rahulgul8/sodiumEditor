@@ -13,11 +13,12 @@ import {
 } from 'draft-js-buttons';
 import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin';
 
-import buttonStyles from './buttonStyle.module.css';
-import toolbarStyles from './toolbarStyle.module.css';
+import styles from './buttonStyle.style';
+import toolbarStyles from './toolbar.style';
 import { linkPlugin } from '../exporter'
-
-export const inlineToolbarPlugin = createInlineToolbarPlugin({ theme: { buttonStyles, toolbarStyles } });
+/** @jsx jsx */
+import { Global, css, jsx } from '@emotion/core'
+export const inlineToolbarPlugin = createInlineToolbarPlugin({ theme: { buttonStyles: styles.buttonStyles, toolbarStyles: toolbarStyles.style } });
 
 
 export const { InlineToolbar } = inlineToolbarPlugin;
@@ -45,23 +46,27 @@ export default class CustomInlineToolbarEditor extends Component {
 
     render() {
         return (
-            <InlineToolbar>
-                {
-                    // may be use React.Fragment instead of div to improve perfomance after React 16
-                    (externalProps) => (
-                        <div>
-                            <BoldButton {...externalProps} />
-                            <ItalicButton {...externalProps} />
-                            <linkPlugin.LinkButton {...externalProps} />
-                            <HeadlineTwoButton {...externalProps} />
-                            <CodeBlockButton {...externalProps} />
-                            <UnorderedListButton {...externalProps} />
-                            <OrderedListButton {...externalProps} />
-                            <BlockquoteButton {...externalProps} />
-                        </div>
-                    )
-                }
-            </InlineToolbar>
+            <React.Fragment>
+                <Global styles={styles.classes} />
+                <Global styles={toolbarStyles.classes} />
+                <InlineToolbar>
+                    {
+                        // may be use React.Fragment instead of div to improve perfomance after React 16
+                        (externalProps) => (
+                            <div>
+                                <BoldButton {...externalProps} />
+                                <ItalicButton {...externalProps} />
+                                <linkPlugin.LinkButton {...externalProps} />
+                                <HeadlineTwoButton {...externalProps} />
+                                <CodeBlockButton {...externalProps} />
+                                <UnorderedListButton {...externalProps} />
+                                <OrderedListButton {...externalProps} />
+                                <BlockquoteButton {...externalProps} />
+                            </div>
+                        )
+                    }
+                </InlineToolbar>
+            </React.Fragment>
         );
     }
 }

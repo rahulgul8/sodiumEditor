@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import 'draft-js-side-toolbar-plugin/lib/plugin.css';
 
 import { EditorState, ContentState, convertFromRaw, convertToRaw } from 'draft-js';
-import './index.css';
+import elementStyle from './index.style';
 import Editor from 'draft-js-plugins-editor';
-import editorStyles from './editorStyles.module.css';
+import editorStyles from './editorStyles.style.js';
 import plugins, { imagePlugin } from './plugins/exporter';
 import CustomInlineToolbarEditor from './plugins/ToolBar/ToolBar'
 import SideBar from './plugins/SideBar/SideBar';
-import 'draft-js/dist/Draft.css';
 import ImageAdd from './plugins/imageAdd/imageAdd';
+import popupStyle from './sidebar.popup.style';
+
+/** @jsx jsx */
+import { Global, jsx } from '@emotion/core';
+import sidebarPopupStyle from './sidebar.popup.style';
 
 export default class WeEditor extends Component {
 
@@ -113,11 +116,12 @@ export default class WeEditor extends Component {
 
     titleFunction = (contentBlock) => {
         const type = contentBlock.getType();
-        return editorStyles.title;
+        return editorStyles.titleClassName;
     }
 
     SideBar = () => {
         return (<SideBar>
+            <Global styles={sidebarPopupStyle.classes} />
             <ImageAdd
                 editorState={this.state.editorState}
                 onChange={this.onChange}
@@ -129,7 +133,9 @@ export default class WeEditor extends Component {
     render() {
         return (
             <div>
-                <div id="titleEditor" className={editorStyles.titleEditor}>
+                <Global styles={elementStyle.classes} />
+                <div id="titleEditor" css={editorStyles.titleEditor}>
+                    <Global styles={editorStyles.titleClass} />
                     <Editor
                         blockStyleFn={this.titleFunction}
                         placeholder={this.props.titlePlaceholder}
@@ -138,7 +144,7 @@ export default class WeEditor extends Component {
                         readOnly={this.props.readOnly}
                     />
                 </div>
-                <div className={editorStyles.editor} >
+                <div css={editorStyles.editor} >
 
                     {!(this.props.readOnly) ? this.SideBar() : null}
 

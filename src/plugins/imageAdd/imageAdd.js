@@ -7,8 +7,6 @@ import { jsx } from '@emotion/core'
 
 export default class ImageAdd extends Component {
 
-
-
     constructor() {
         super();
         this.state = {

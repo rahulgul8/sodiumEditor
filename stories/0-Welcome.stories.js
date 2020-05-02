@@ -1,15 +1,13 @@
 import React from 'react';
-import { linkTo } from '@storybook/addon-links';
-import { Welcome } from '@storybook/react/demo';
 import Editor from '../src/WeEditor';
-import '../src/mscStyles.css'
+
 export default {
-  title: 'Welcome',
-  component: Welcome,
+  title: 'Editor',
+  component: Editor,
 };
 
-export const ToStorybook = () => <div style={{ margin: '4em',border:'1px solid black' }}><Editor titlePlaceholder="title" placeholder="Enter"/></div>;
+export const ToStorybook = () => <div style={{ margin: '4em' }}><Editor titlePlaceholder="title" placeholder="Enter"/></div>;
 
 ToStorybook.story = {
-  name: 'to Storybook',
+  name: 'Editor',
 };

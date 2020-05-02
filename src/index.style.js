@@ -1,9 +1,8 @@
-.formatMyImage{
-    max-width: 100%;
-    max-height: 100%;
-    width: 100%;
-}
+import { css } from '@emotion/core';
 
+export default {
+
+    classes: css`
 .WeFigure{
     width: 100%;
     padding: 0;
@@ -52,4 +51,6 @@ pre:not(.WeCode){
     overflow: scroll;
     overflow-y: hidden;
     overflow-x: auto;
+}`
+
 }

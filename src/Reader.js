@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import 'draft-js-side-toolbar-plugin/lib/plugin.css';
-import './index.css';
 import WeEditor from './WeEditor'
-import { EditorState, ContentState, convertFromRaw } from 'draft-js';
-import 'draft-js/dist/Draft.css';
 
 class Reader extends Component {
 
